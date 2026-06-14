@@ -1,0 +1,195 @@
+/* Das Hauptfenster */
+.window {
+  border: solid 2px #ff9900;
+  width: 450px;
+  height: 430px;
+  border-radius: 16px;
+  padding: 20px;
+  position: absolute;
+  background-color: white;
+  box-sizing: border-box;
+  z-index: 5;
+  box-shadow: 0px 15px 35px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Der obere Balken zum Ziehen */
+.windowheader {
+  background-color: #ff9900;
+  color: black;
+  padding: 8px 15px;
+  margin: -20px -20px 15px -20px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  cursor: move;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Der Schließen-Button ganz rechts */
+.closebutton {
+  cursor: pointer;
+  font-size: 18px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+/* Kleiner Bonus: Hover-Effekt für das X, wenn man mit der Maus drüberfährt */
+.closebutton:hover {
+  background-color: rgba(255, 0, 0, 0.753);
+}
+
+/* Innere Struktur des Fensters */
+.window-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+  justify-content: space-around;
+}
+
+/* Der Instagram-Button */
+.insta-button {
+  display: inline-block;
+  background-color: #ff9900;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+
+.insta-button:hover {
+  transform: scale(1.05);
+}
+/* Styling für das ausgewählte Desktop-Icon */
+.selected {
+  background-color: rgba(255, 153, 0, 0.25) !important;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
+}
+/* GANZ UNTEN IN STYLE.CSS EINFÜGEN */
+
+/* Die Menüleiste in der App */
+.app-nav {
+  display: flex;
+  gap: 10px;
+  background-color: #f1f1f1;
+  padding: 5px;
+  margin: -15px -20px 15px -20px; /* Schmiegt sich perfekt an den Rand an */
+  border-bottom: 1px solid #ddd;
+}
+
+/* Die einzelnen Tabs/Buttons */
+.nav-tab {
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+  color: #333;
+  transition: 0.2s;
+}
+
+/* Wenn man mit der Maus über einen Tab fährt */
+.nav-tab:hover {
+  background-color: rgba(255, 153, 0, 0.2);
+}
+
+/* Der aktive Tab (der gerade ausgewählt ist) */
+.nav-tab.active {
+  background-color: #ff9900;
+  color: black;
+}
+
+/* GANZ UNTEN IN STYLE.CSS EINFÜGEN */
+
+/* Das Grundgerüst der Tabelle */
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse; /* Verhindert doppelte Rahmenlinien */
+  font-size: 14px;
+  text-align: left;
+}
+
+/* Die Kopfzeile (Überschriften) */
+.calendar-table th {
+  background-color: #222;
+  color: #ff9900; /* McLaren Orange */
+  padding: 10px;
+  font-weight: bold;
+}
+
+/* Die normalen Tabellen-Zellen */
+.calendar-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+/* Jede zweite Zeile bekommt einen leicht grauen Hintergrund (Zebramuster) */
+.calendar-table tbody tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+/* Highlight für eine Podiumsplatzierung */
+.calendar-table td.podium {
+  font-weight: bold;
+  color: #e67e22;
+}
+
+/* GANZ UNTEN IN STYLE.CSS EINFÜGEN */
+
+/* Der Container, der Sidebar und Inhalt nebeneinander anordnet */
+.reports-container {
+  display: flex;
+  gap: 15px;
+  height: 250px; /* Begrenzt die Höhe, damit alles ins Fenster passt */
+}
+
+/* Die linke Seitenleiste für die Renn-Auswahl */
+.reports-sidebar {
+  flex: 1;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow-y: auto; /* Erlaubt Scrollen, wenn die Liste lang wird */
+}
+
+/* Die einzelnen anklickbaren Renn-Einträge */
+.report-link {
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.report-link:hover {
+  background-color: rgba(255, 153, 0, 0.1);
+}
+
+/* Das aktuell ausgewählte Rennen in der Liste */
+.report-link.active-report {
+  background-color: #222;
+  color: #ff9900;
+}
+
+/* Die rechte Box für den eigentlichen Text */
+.reports-content {
+  flex: 2;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.4;
+  padding-right: 5px;
+}

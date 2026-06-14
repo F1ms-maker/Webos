@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!-- FEHLER BEHOBEN: Das Script-Tag mit type="module" wurde hier entfernt -->
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Lando Norris OS</title>
+</head>
+<body style="background-image: url('lando-wide-final.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; margin: 0; height: 100vh; overflow: hidden; font-family: sans-serif;">
+    
+     <!-- Taskleiste -->
+     <div style="position: absolute; top: 0; left: 0; width: 100%; display: flex; backdrop-filter: blur(10px); background-color: rgba(0, 0, 0, 0.4); color: #ff9900; justify-content: space-between; z-index: 10; align-items: center; height: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+      <p style="margin-left: 16px; font-weight: bold;">Norris Fan OS</p>
+      <p style="cursor: pointer; background-color: rgba(255, 153, 0, 0.2); padding: 4px 12px; border-radius: 8px; font-weight: bold; transition: 0.2s;" id="taskbarWelcomeOpen" onmouseover="this.style.backgroundColor='rgba(255, 153, 0, 0.4)'" onmouseout="this.style.backgroundColor='rgba(255, 153, 0, 0.2)'">Open Welcome</p>
+      <p id="timeElement" style="margin-right: 16px; font-variant-numeric: tabular-nums;">Time</p>
+     </div>
+
+     <!-- Desktop Apps Container -->
+     <div id="dektopApps" style="padding-top: 64px; padding-left: 16px; display: flex; flex-direction: column; gap: 20px;">
+      
+      <!-- APP 1: Welcome App Shortcut -->
+      <div id="welcomeopen-icon" class="desktop-icon" style="cursor: pointer; text-align: center; width: 100px; padding: 10px; transition: 0.2s;" onclick="handleIconTap(this, document.getElementById('welcome'))">
+        <div style="filter: drop-shadow(0 0 8px orange); width: fit-content; margin: 0 auto;">
+          <img src="ln4logo.png" style="width: 64px; height: 64px; border-radius: 32px; object-fit: cover; border: 2px solid #ff9900;">
+        </div>
+        <p style="margin: 4px 0 0 0; color: chartreuse; font-size: 14px; text-shadow: 1px 1px 3px black;">Welcome Screen</p>
+      </div>
+
+      <!-- APP 2: Race Weekends Shortcut -->
+      <div id="raceopen" class="desktop-icon" style="cursor: pointer; text-align: center; width: 100px; padding: 10px; transition: 0.2s;" onclick="handleIconTap(this, document.getElementById('raceWindow'))">
+        <div style="filter: drop-shadow(0 0 8px #ff9900); width: fit-content; margin: 0 auto;">
+          <div style="width: 64px; height: 64px; border-radius: 32px; background-color: #222; border: 2px solid #ff9900; display: flex; align-items: center; justify-content: center; font-size: 28px;">🏁</div>
+        </div>
+        <p style="margin: 4px 0 0 0; color: chartreuse; font-size: 14px; text-shadow: 1px 1px 3px black;">Race Weekends</p>
+      </div>
+
+      <!-- APP 3: WM-Stände Shortcut -->
+      <div id="standingsopen" class="desktop-icon" style="cursor: pointer; text-align: center; width: 100px; padding: 10px; transition: 0.2s;" onclick="handleIconTap(this, document.getElementById('standingsWindow'))">
+        <div style="filter: drop-shadow(0 0 8px #ff9900); width: fit-content; margin: 0 auto;">
+          <div style="width: 64px; height: 64px; border-radius: 32px; background-color: #222; border: 2px solid #ff9900; display: flex; align-items: center; justify-content: center; font-size: 28px;">🏆</div>
+        </div>
+        <p style="margin: 4px 0 0 0; color: chartreuse; font-size: 14px; text-shadow: 1px 1px 3px black;">WM-Stände</p>
+      </div>
+
+     </div>
+
+     <!-- FENSTER 1: Das bekannte Welcome-Fenster -->
+     <div class="window" id="welcome" style="top: 25%; left: 20%;">
+      <div class="windowheader" id="welcomeheader">
+        <span>🏎️ Lando Norris OS - Welcome</span>
+        <span class="closebutton" id="welcomeclose">✕</span>
+      </div>
+
+      <div class="window-content">
+        <h1 style="margin: 0; color: #111; font-size: 28px;">Lando Norris OS</h1>
+        <div style="margin: 5px 0;">
+          <h3 style="margin: 0; color: #666;">Introduction</h3>
+          <p style="margin: 5px 0; font-size: 16px; font-weight: 500;">Hello LN4 Fans!</p>
+        </div>
+        <img style="width: 140px; height: 140px; border-radius: 16px; object-fit: cover; border: 2px solid #ff9900; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" src="https://www.motorsport-total.com/img/2026/260312/348042_w660_h330.webp?ts=1773309151" alt="Lando Norris" />
+        <a href="https://www.instagram.com/lnfour/" target="_blank" class="insta-button">Instagram besuchen</a>
+      </div>
+    </div>
+
+    <!-- FENSTER 2: Das "Race Weekends" Fenster -->
+    <div class="window" id="raceWindow" style="top: 25%; left: 55%;">
+      <div class="windowheader" id="raceWindowheader">
+        <span>📅 F1 Calendar - Race Weekends</span>
+        <span class="closebutton" id="raceclose">✕</span>
+      </div>
+
+      <!-- Die Navigationsleiste direkt unter dem Header -->
+      <div class="app-nav">
+        <button id="btnCalendar" class="nav-tab active">📅 Kalender</button>
+        <button id="btnReports" class="nav-tab">📰 Berichte</button>
+      </div>
+
+      <div class="window-content" style="justify-content: flex-start; gap: 15px; overflow-y: auto;">
+        
+        <!-- Container für den Kalender (sichtbar beim Start) -->
+        <div id="raceCalendar" style="width: 100%;">
+          <h1 style="margin: 0 0 15px 0; color: #111; font-size: 22px;">Rennkalender 2026</h1>
+          
+          <table class="calendar-table">
+            <thead>
+              <tr>
+                <th>Grand Prix</th>
+                <th>Datum</th>
+                <th>Ergebnis (LN4)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🇲🇨 Monaco GP</td>
+                <td>07. Juni</td>
+                <td style="color: red; font-weight: bold;">DNF 🛠️</td>
+              </tr>
+              <tr>
+                <td>🇪🇸 Barcelona GP</td>
+                <td>14. Juni</td>
+                <td>Ausstehend</td>
+              </tr>
+              <tr>
+                <td>🇦🇹 Österreich GP</td>
+                <td>26. Juli</td>
+                <td>Ausstehend</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Container für die Berichte (beim Start unsichtbar) -->
+        <div id="raceReports" style="width: 100%; display: none;">
+          <h1 style="margin: 0 0 15px 0; color: #111; font-size: 22px;">Session-Berichte</h1>
+          
+          <div class="reports-container">
+            <!-- Linke Seite: Liste der verfügbaren Berichte -->
+            <div class="reports-sidebar">
+              <div class="report-link active-report" onclick="showReport('monaco')">🇲🇨 Monaco GP</div>
+              <div class="report-link" onclick="showReport('barcelona')">🇪🇸 Barcelona GP</div>
+            </div>
+            
+            <!-- Rechte Seite: Das dynamische Textfeld für den Inhalt -->
+            <div class="reports-content">
+              <!-- Monaco Bericht -->
+              <div id="report-monaco" class="report-text">
+                <h3 style="margin-top: 0; color: #ff9900;">Monaco Grand Prix - DNF für LN4</h3>
+                <p><b>Qualifying:</b> Lando sichert sich eine gute Startposition beim 1000. GP von McLaren.</p>
+                <p><b>Rennen:</b> Eine starke Pace wird leider durch ein technisches Problem im Rennen nicht belohnt.</p>
+              </div>
+              
+              <!-- Barcelona Bericht -->
+              <div id="report-barcelona" class="report-text" style="display: none;">
+                <h3 style="margin-top: 0; color: #ff9900;">Barcelona Grand Prix</h3>
+                <p><b>Qualifying:</b> Startplatz 4 nach einem sehr soliden und engen Qualifying.</p>
+                <p><b>Rennen:</b> Steht heute an! Drücken wir die Daumen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FENSTER 3: Das neue "WM-Stände" Fenster -->
+    <div class="window" id="standingsWindow" style="top: 30%; left: 35%; display: none;">
+      <div class="windowheader" id="standingsWindowheader">
+        <span>🏆 F1 Standings - WM Platzierungen</span>
+        <span class="closebutton" id="standingsclose">✕</span>
+      </div>
+
+      <!-- Sub-Navigation für die WM-App -->
+      <div class="app-nav">
+        <button id="btnDrivers" class="nav-tab active">🏎️ Fahrer-WM</button>
+        <button id="btnTeams" class="nav-tab">🏭 Team-WM</button>
+      </div>
+
+      <div class="window-content" style="justify-content: flex-start; gap: 15px; overflow-y: auto;">
+        
+        <!-- Bereich 1: Fahrer-Wertung (beim Start sichtbar) -->
+        <div id="viewDrivers" style="width: 100%;">
+          <h1 style="margin: 0 0 15px 0; color: #111; font-size: 22px;">Fahrer-Weltmeisterschaft 2026</h1>
+          <table class="calendar-table">
+            <thead>
+              <tr>
+                <th class="pos">Pos.</th>
+                <th>Fahrer</th>
+                <th>Team</th>
+                <th class="pts">Punkte</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="leader">
+                <td class="pos">1</td>
+                <td>🇮🇹 A. Kimi Antonelli</td>
+                <td>Mercedes</td>
+                <td class="pts">156</td>
+              </tr>
+              <tr class="p2">
+                <td class="pos">2</td>
+                <td>🇬🇧 Lewis Hamilton</td>
+                <td>Ferrari</td>
+                <td class="pts">90</td>
+              </tr>
+              <tr class="p3">
+                <td class="pos">3</td>
+                <td>🇬🇧 George Russell</td>
+                <td>Mercedes</td>
+                <td class="pts">88</td>
+              </tr>
+              <tr>
+                <td class="pos">4</td>
+                <td>🇲🇨 Charles Leclerc</td>
+                <td>Ferrari</td>
+                <td class="pts">75</td>
+              </tr>
+              <tr class="mclaren-row">
+                <td class="pos">5</td>
+                <td>🇬🇧 Lando Norris</td>
+                <td>McLaren</td>
+                <td class="pts">58</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bereich 2: Team-Wertung (beim Start unsichtbar) -->
+        <div id="viewTeams" style="width: 100%; display: none;">
+          <h1 style="margin: 0 0 15px 0; color: #111; font-size: 22px;">Konstrukteurs-Weltmeisterschaft</h1>
+          <table class="calendar-table">
+            <thead>
+              <tr>
+                <th class="pos">Pos.</th>
+                <th>Team</th>
+                <th class="pts">Punkte</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="leader">
+                <td class="pos">1</td>
+                <td>🇩🇪 Mercedes</td>
+                <td class="pts">244</td>
+              </tr>
+              <tr class="p2">
+                <td class="pos">2</td>
+                <td>🇮🇹 Ferrari</td>
+                <td class="pts">165</td>
+              </tr>
+              <tr class="mclaren-row p3">
+                <td class="pos">3</td>
+                <td>🇬🇧 McLaren</td>
+                <td class="pts">116</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+     <!-- Das Skript wird am Ende geladen -->
+     <script src="script.js"></script>
+  </body>
+</html>
