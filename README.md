@@ -1,32 +1,25 @@
-# 🏎️ Lando Norris Fan WebOS
+🏎️ Lando Norris Fan WebOS
+An interactive, simulated browser-based operating system (WebOS) custom-tailored for Lando Norris (LN4) fans. The project was built entirely using modern HTML, CSS, and JavaScript.
 
-Ein interaktives, simuliertes Betriebssystem (WebOS) direkt für den Browser, maßgeschneidert für Fans von **Lando Norris (LN4)**. Das Projekt wurde komplett mit modernem HTML, CSS und JavaScript umgesetzt.
+🚀 Features
+The WebOS features a desktop interface with an interactive taskbar, real-time clock, and several fully functional "apps":
 
----
+👋 Welcome Screen: A charming introductory app for LN4 fans, including a direct link to his official Instagram profile.
 
-## 🚀 Features
+🏁 Race Weekends (F1 Calendar): A racing calendar featuring up-to-date race results (e.g., Monaco GP) and integrated session reports that you can switch between dynamically.
 
-Das WebOS bietet eine Desktop-Oberfläche mit einer interaktiven Taskleiste, Echtzeituhr und mehreren voll funktionsfähigen "Apps":
+🏆 F1 Standings: An app with exclusive F1 styling (gold effects for leaders, podium colors, and McLaren branding) to display current driver and constructor championship standings.
 
-*   **👋 Welcome Screen:** Eine charmante Einführungs-App für LN4-Fans inklusive Verlinkung zum offiziellen Instagram-Profil.
-*   **🏁 Race Weekends (F1 Kalender):** Ein Rennkalender mit aktuellen Rennergebnissen (z. B. Monaco GP) und integrierten Session-Berichten, zwischen denen dynamisch hin- und hergeschaltet werden kann.
-*   **🏆 F1 Standings (WM-Stände):** Eine App mit exklusivem F1-Styling (Gold-Effekt für Führende, Podium-Farben und McLaren-Branding) zur Anzeige der aktuellen Fahrer- und Konstrukteurs-Weltmeisterschaft.
+🛠️ Technologies & Development
+Frontend: Pure HTML5, CSS3 (including custom scrollbars, glassmorphism effects for the taskbar, and responsive table layouts), and Vanilla JavaScript.
 
----
+AI Assistance: Developed with the help of Gemini for code debugging, optimizing window-closing logic, and detailed UI styling.
 
-## 🛠️ Technologien & Entwicklung
+💻 Local Installation & Execution
+You can easily launch the WebOS on your own PC without any complex installation:
 
-*   **Frontend:** Pures HTML5, CSS3 (inklusive Custom Scrollbars, Glassmorphismus-Effekten für die Taskleiste und responsivem Tabellen-Layout) und Vanilla JavaScript.
-*   **KI-Unterstützung:** Entwickelt mit Hilfe von **Gemini** für das Code-Debugging, das Optimieren der Fenster-Schließen-Logik sowie das detaillierte UI-Styling.
+Click the green <> Code button in the top right corner and select Download ZIP (or clone the repository via Git).
 
----
+Unzip the folder on your computer.
 
-## 💻 Lokale Installation & Ausführung
-
-Du kannst das WebOS ganz einfach ohne komplizierte Installation auf deinem eigenen PC starten:
-
-1. Klicke oben rechts auf den grünen `<> Code` Button und wähle **Download ZIP** (oder klone das Repository via Git).
-2. Entpacke den Ordner auf deinem Computer.
-3. Öffne die `index.html` per Doppelklick in einem beliebigen Browser (Chrome, Firefox, Edge, Safari).
-
----
+Double-click index.html to open it in any standard browser (Chrome, Firefox, Edge, or Safari).
